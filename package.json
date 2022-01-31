@@ -1,6 +1,9 @@
 {
   "name": "root",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
@@ -22,7 +25,12 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "lint": "eslint packages/ --ext .ts,.tsx"
+    "lint": "eslint packages/ --ext .ts,.tsx",
+    "build": "lerna run build",
+    "clean": "lerna clean && lerna run clean",
+    "format": "prettier --write \"packages/**/*.{ts,tsx,json}\"",
+    "bootstrap": "lerna bootstrap",
+    "storybook": "yarn workspace @exito/ui storybook"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"
