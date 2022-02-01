@@ -1,7 +1,4 @@
 package.json
-tsconfig.json
-package-lock.json
-tslint.json
 node_modules/
 public/
 coverage/
