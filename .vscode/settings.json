@@ -1,3 +1,6 @@
 {
-  "conventionalCommits.scopes": ["config"]
+  "conventionalCommits.scopes": [
+    "config",
+    "publish"
+  ]
 }

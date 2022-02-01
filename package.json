@@ -11,6 +11,7 @@
     "@typescript-eslint/parser": "^5.10.2",
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^26.0.0",
     "eslint-plugin-react": "^7.28.0",
     "husky": "^7.0.4",
     "lerna": "^4.0.0",
@@ -24,7 +25,8 @@
     "clean": "lerna clean && lerna run clean",
     "bootstrap": "lerna bootstrap",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|tsx|json)\""
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|tsx|json)\"",
+    "storybook": "lerna run --scope @exito/ui storybook --stream"
   },
   "lint-staged": {
     "*.{ts,js,tsx,jsx}": [
