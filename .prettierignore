@@ -5,4 +5,3 @@ coverage/
 .vscode/
 .cache/
 __generated__
-src/typings/
