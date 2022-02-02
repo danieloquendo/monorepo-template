@@ -1,3 +1,3 @@
-import CoreExample from './CoreExample';
+import CoreExample from './coreExample';
 
 export { CoreExample };
