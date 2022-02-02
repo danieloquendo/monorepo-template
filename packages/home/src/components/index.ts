@@ -1,3 +1,3 @@
-import ExampleHome from './homeExample';
+import HomeExample from './homeExample';
 
-export { ExampleHome };
+export { HomeExample };
