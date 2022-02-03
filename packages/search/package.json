@@ -1,6 +1,6 @@
 {
   "version": "1.1.0",
-  "name": "@exito/search",
+  "name": "@monorepoexito/search",
   "publishConfig": {
     "access": "public"
   },

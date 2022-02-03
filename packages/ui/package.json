@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "name": "@exito/ui",
+  "name": "@monorepoexito/ui",
   "author": "Daniel Oquendo",
   "module": "dist/ui.esm.js",
   "license": "MIT",
