@@ -26,7 +26,12 @@
     "bootstrap": "lerna bootstrap",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|tsx|json)\"",
-    "storybook": "lerna run --scope @exito/ui storybook --stream"
+    "storybook": "lerna run --scope @exito/ui storybook --stream",
+    "link": "lerna run link",
+    "link:home": "lerna run link --scope=@exito/home",
+    "link:core": "lerna run link --scope=@exito/core",
+    "link:search": "lerna run link --scope=@exito/search",
+    "link:product": "lerna run link --scope=@exito/product"
   },
   "lint-staged": {
     "*.{ts,js,tsx,jsx}": [
