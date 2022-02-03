@@ -1,6 +1,6 @@
 {
   "version": "0.2.0",
-  "name": "@exito/core",
+  "name": "@exito/home",
   "author": "Daniel Oquendo",
   "module": "dist/ui.esm.js",
   "license": "MIT",
