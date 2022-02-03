@@ -1,6 +1,9 @@
 {
   "version": "1.0.0",
   "name": "@exito/home",
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Daniel Oquendo",
   "module": "dist/ui.esm.js",
   "license": "MIT",
