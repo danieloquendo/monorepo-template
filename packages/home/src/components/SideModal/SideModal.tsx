@@ -1,14 +1,10 @@
 import React, { FC } from 'react';
 import { Modal, Button } from '@faststore/ui';
 import { Icon } from '@faststore/ui';
+import { Props as ContainerProps } from './SideModalContainer';
 
-interface Props {
-  buttonText?: string;
-  iconButton: React.ReactNode;
-  iconClose: React.ReactNode;
-  iconHeader: React.ReactNode;
+interface Props extends ContainerProps {
   isOpen: boolean;
-  modalTitle: string;
   handleClose: () => void;
   setIsOpen: (isOpen: boolean) => void;
 }
@@ -22,7 +18,9 @@ const SideModal: FC<Props> = ({
   iconHeader,
   iconClose,
   iconButton,
-  buttonText
+  buttonText,
+  className,
+  orientation
 }) => {
   return (
     <>
@@ -30,7 +28,7 @@ const SideModal: FC<Props> = ({
         <Icon component={iconButton} />
         <p>{buttonText}</p>
       </Button>
-      <Modal isOpen={isOpen} onDismiss={handleClose}>
+      <Modal isOpen={isOpen} onDismiss={handleClose} className={className} style={{ alignSelf: orientation }}>
         <div data-store-modal-content-header>
           <div data-store-modal-content-title>
             <Icon component={iconHeader} />

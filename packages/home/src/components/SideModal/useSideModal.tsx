@@ -6,8 +6,8 @@ const useSideModal = () => {
 
   useEffect(() => {
     if (isOpen) {
+      document.body.style.paddingRight = `${window?.innerWidth - document?.body?.offsetWidth}px`;
       document.body.style.overflow = 'hidden';
-      document.body.style.paddingRight = '18px';
     } else {
       document.body.style.overflow = '';
       document.body.style.paddingRight = '';
