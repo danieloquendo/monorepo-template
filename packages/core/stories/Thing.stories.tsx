@@ -1,9 +1,9 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import ExampleComponent, { Props } from '../src/ExampleComponent';
+import ExampleComponent, { Props } from '../src/components/CoreExample';
 
 const meta: Meta = {
-  title: 'Welcome',
+  title: 'Components/Example',
   component: ExampleComponent,
   argTypes: {
     children: {
