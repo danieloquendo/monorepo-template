@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import React, { HTMLAttributes } from 'react';
 
-interface Props {
+export interface Props extends HTMLAttributes<HTMLDivElement> {
   fullName: string;
 }
 
@@ -9,10 +9,10 @@ const getInitials = (name: string) => {
   return name.substring(0, hasTokens ? 1 : 2) + (hasTokens ? name.charAt(name.lastIndexOf(' ') + 1) : '');
 };
 
-const NameInitials: FC<Props> = ({ fullName }) => {
+const NameInitials = (props: Props) => {
   return (
-    <div data-name-initials>
-      <span data-name-initials-content>{getInitials(fullName)}</span>
+    <div data-name-initials-content {...props}>
+      {getInitials(props.fullName)}
     </div>
   );
 };

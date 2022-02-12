@@ -6,7 +6,7 @@ interface Menu {
   icon: React.ReactNode;
 }
 
-interface Props {
+export interface Props {
   menu: Menu[];
 }
 

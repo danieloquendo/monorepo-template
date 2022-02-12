@@ -10,6 +10,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   iconHeader: React.ReactNode;
   modalTitle: string;
   orientation: 'end' | 'start' | 'center';
+  isMobile?: boolean;
 }
 
 const SideModalContainer = (props: Props) => {
