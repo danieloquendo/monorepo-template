@@ -4,8 +4,8 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: ReactChild;
 }
 
-const ExampleComponent: FC<Props> = () => {
-  return <div>Core Example</div>;
+const HomeExample: FC<Props> = () => {
+  return <div>Home Exlample</div>;
 };
 
-export default ExampleComponent;
+export default HomeExample;

@@ -1,4 +1,6 @@
-import ExampleComponent from './CoreExample';
-import CoreTest from './CoreTest';
+import SideModal from './SideModal';
+import LoginButton from './Login';
+import NameInitials from './NameInitials';
+import MenuIcons from './MenuIcons';
 
-export { ExampleComponent, CoreTest };
+export { SideModal, LoginButton, NameInitials, MenuIcons };
