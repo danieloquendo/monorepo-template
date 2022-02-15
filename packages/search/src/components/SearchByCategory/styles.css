@@ -1,0 +1,31 @@
+/* .dropdown-container{
+  display: flex;
+  flex-direction: column;
+}
+.dropdown{
+  background-color: #f4f4f4;
+  width: 10rem;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px 0 0 10px;
+  margin-bottom: 10px;
+}
+
+.dropdown-content-item{
+  background-color: #FFF;
+  border: 1px solid #f4f4f4;
+}
+
+.dropdown-item{
+  padding: 9px 12px;
+}
+
+.dropdown-item:hover{
+  cursor: pointer;
+  background-color: #f4f4f4;
+}
+
+.search-content{
+  display: flex;
+}
+ */
