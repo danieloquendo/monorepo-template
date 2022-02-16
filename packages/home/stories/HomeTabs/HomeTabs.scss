@@ -1,0 +1,64 @@
+@import "../utilities.scss";
+
+
+[data-tabs-navigate], [data-tabs-container]{
+    background-color: #f4f4f4;
+    display: flex;
+    min-height: 40px;
+    padding: 0px;
+    font-family: arial, sans-serif;
+}
+
+[data-active-tab],[data-active-tab=false], [data-active-tab] > *{
+    cursor: pointer;
+}
+
+[data-tab] {
+    width: 168px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border-radius: 10px 10px 0px 0px;
+    text-decoration: none;
+    outline: none;
+    font-size: 12px;
+}
+
+[data-active-tab]{
+    background: $amarillo_exito;
+    color: #222;
+}
+
+[data-active-tab=false]{
+    background: $off_tab;
+    color: #fff;
+    &:hover{
+        background: $off_tab_hover;
+    }
+}
+
+[data-home-superbar]{
+    width: 100%;
+}
+@media only screen and (max-width: 600px) {
+    [data-tabs-navigate]{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    [data-tab]{
+        width: 50%;
+    }
+    [data-home-superbar]{
+        min-height: 40px;
+    }
+  }
+
+// should not be used outside of this storybook ... 
+
+[data-home-superbar]{
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
