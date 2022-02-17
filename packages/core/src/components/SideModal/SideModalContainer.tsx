@@ -5,12 +5,14 @@ import useSideModal from './useSideModal';
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   buttonText?: string;
   children?: ReactChild;
-  iconButton: React.ReactNode;
+  iconButton?: React.ReactNode;
   iconClose: React.ReactNode;
   iconHeader: React.ReactNode;
+  isMobile?: boolean;
   modalTitle: string;
   orientation: 'end' | 'start' | 'center';
-  isMobile?: boolean;
+  orientationMobile?: 'end' | 'start' | 'center';
+  mobileHeaderIcon?: React.ReactNode;
 }
 
 const SideModalContainer = (props: Props) => {

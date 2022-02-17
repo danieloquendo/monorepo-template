@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import MenuIcons from '../../../src/components/MenuIcons';
+import MenuIconsComponent from '../../../src/components/MenuIcons';
 import { checkPaperIcon, heartIcon, truckIcon, userIcon } from '../../icons';
 import './MenuIcons.scss';
 
@@ -20,10 +20,10 @@ const menu = [
 ];
 
 export default {
-  title: 'Atoms/MenuIcons',
-  component: MenuIcons
-} as ComponentMeta<typeof MenuIcons>;
+  title: 'Atoms/Menu Icons',
+  component: MenuIconsComponent
+} as ComponentMeta<typeof MenuIconsComponent>;
 
-const Template: ComponentStory<typeof MenuIcons> = (args) => <MenuIcons {...args} />;
-export const Default = Template.bind({});
-Default.args = { menu };
+const Template: ComponentStory<typeof MenuIconsComponent> = (args) => <MenuIconsComponent {...args} />;
+export const MenuIcons = Template.bind({});
+MenuIcons.args = { menu };

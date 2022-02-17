@@ -20,22 +20,41 @@ const SideModal: FC<Props> = ({
   iconButton,
   buttonText,
   className,
-  orientation
+  orientation,
+  isMobile,
+  orientationMobile,
+  mobileHeaderIcon
 }) => {
   return (
     <>
       <Button data-store-modal-button onClick={() => setIsOpen(!isOpen)}>
-        <Icon component={iconButton} />
+        {iconButton && <Icon component={iconButton} />}
         <p>{buttonText}</p>
       </Button>
-      <Modal isOpen={isOpen} onDismiss={handleClose} className={className} style={{ alignSelf: orientation }}>
+      <Modal
+        isOpen={isOpen}
+        onDismiss={handleClose}
+        className={className}
+        style={{ alignSelf: isMobile && orientationMobile ? orientationMobile : orientation }}
+      >
+        {/* TODO: this should be defined with UI/UX */}
+        {isMobile && (
+          <div data-store-modal-content-header-banner>
+            <div data-store-modal-content-header-banner-icon>{mobileHeaderIcon}</div>
+            <div data-store-modal-content-header-banner-close>
+              <Icon onClick={handleClose} component={iconClose} />
+            </div>
+          </div>
+        )}
+
         <div data-store-modal-content-header>
           <div data-store-modal-content-title>
             <Icon component={iconHeader} />
             <p>{modalTitle}</p>
           </div>
           <div data-store-modal-content-button>
-            <Icon onClick={handleClose} component={iconClose} />
+            {/* TODO: this should be defined with UI/UX */}
+            {!isMobile && <Icon onClick={handleClose} component={iconClose} />}
           </div>
         </div>
         <div data-action-container>
