@@ -1,12 +1,12 @@
-import type { ComponentPropsWithRef, FormEvent, ReactNode } from 'react';
+import type { ComponentPropsWithRef, FormEvent } from 'react';
 import React, { forwardRef, useRef, useState, useEffect, useCallback } from 'react';
-import { Form, Label, Input, Button, Checkbox, LoadingButton, Link } from '@faststore/ui';
+import { Form, Label, Input, Checkbox, LoadingButton, Link } from '@faststore/ui';
 
 import { validateEmail } from './FieldsValidator';
 import ErrorMessage from './ErrorMessages';
 import { useNewsletter } from './useNewsletter';
 
-const errorMessages = {
+const defaultErrorMessages = {
   empty: {
     checkButton: 'Debes aceptar términos y condiciones para inscribirte y recibir ofertas exclusivas.',
     email: 'Se requiere el correo.'
@@ -24,14 +24,15 @@ const initialErrors = {
 };
 
 export interface NewsletterProps extends Omit<ComponentPropsWithRef<'form'>, 'title' | 'onSubmit'> {
-  title: ReactNode;
-  subtitle?: ReactNode;
+  title: string;
+  subtitle?: string;
+  submit?: string;
   onSubmit: (value: string) => void;
 }
 
 const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
   // eslint-disable-next-line react/prop-types
-  function Newsletter({ title, subtitle, onSubmit, ...otherProps }, ref) {
+  function Newsletter({ title, subtitle, submit, onSubmit, ...otherProps }, ref) {
     const [errors, setErrors] = useState(initialErrors);
     const [isChecked, setIsChecked] = useState(false);
     const [actualEmail, setActualEmail] = useState('');
@@ -64,7 +65,7 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
           submitUser(Object.values(userResult)[0].id);
         } else {
           // User exist and suscribe
-          tempErrorsSubscribeUser.alreadySubscribed = errorMessages.invalid.alreadySubscribed;
+          tempErrorsSubscribeUser.alreadySubscribed = defaultErrorMessages.invalid.alreadySubscribed;
 
           setErrors({ ...tempErrorsSubscribeUser });
         }
@@ -85,13 +86,13 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
       const isEmailValid = validateEmail(email);
 
       if (email === '') {
-        tempErrors.email = errorMessages.empty.email;
+        tempErrors.email = defaultErrorMessages.empty.email;
       } else if (!isEmailValid) {
-        tempErrors.email = errorMessages.invalid.email;
+        tempErrors.email = defaultErrorMessages.invalid.email;
       }
 
       if (!isChecked) {
-        tempErrors.checkButton = errorMessages.empty.checkButton;
+        tempErrors.checkButton = defaultErrorMessages.empty.checkButton;
       }
 
       setErrors({ ...tempErrors });
@@ -119,7 +120,7 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
       }
 
       if (emailSessionStorage === email) {
-        tempErrorSubmit.alreadySubscribed = errorMessages.invalid.alreadySubscribed;
+        tempErrorSubmit.alreadySubscribed = defaultErrorMessages.invalid.alreadySubscribed;
       } else {
         searchUser({ email });
       }
@@ -131,8 +132,9 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
       <section data-store-newsletter>
         <Form data-newsletter-form ref={ref} onSubmit={handleSubmit} {...otherProps}>
           <div data-newsletter-header>
-            {title}
-            {Boolean(subtitle) && subtitle}
+            <p data-newsletter-title>{title}</p>
+
+            {Boolean(subtitle) && <p data-newsletter-subtitle>{subtitle}</p>}
           </div>
 
           <div data-newsletter-controls>
@@ -143,24 +145,16 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
               name="newsletter-email"
               ref={emailInputRef}
             />
-            {loading ? (
-              <LoadingButton loading data-store-loading-button>
-                Loading Button
-              </LoadingButton>
-            ) : (
-              <Button type="submit" data-store-button>
-                Suscríbete
-              </Button>
-            )}
+            <LoadingButton loading={loading} data-store-loading-button>
+              {submit !== '' ? submit : 'Subscribe'}
+            </LoadingButton>
           </div>
-          <div>
-            <Label>
-              <Checkbox onChange={(event) => onChangeCheckButton(event.target.checked)} />
-            </Label>
+          <div data-newsletter-legals>
+            <Checkbox onChange={(event) => onChangeCheckButton(event.target.checked)} />
             <Label>
               <span>
                 <p>
-                  Acepto
+                  Acepto{' '}
                   <Link
                     as="a"
                     title="Términos y condiciones"
@@ -170,7 +164,7 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
                   >
                     términos y condiciones
                   </Link>
-                  ,
+                  ,{' '}
                   <Link
                     as="a"
                     title="Términos y condiciones marketplace"
@@ -179,8 +173,8 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
                     href="/terminos-de-marketplace"
                   >
                     términos y condiciones marketplace
-                  </Link>
-                  y autorizo el
+                  </Link>{' '}
+                  y autorizo el{' '}
                   <Link
                     as="a"
                     title="Tratamiento de mis datos personales"
@@ -194,7 +188,7 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
               </span>
             </Label>
           </div>
-          <div>
+          <div data-newsletter-error-container>
             {error && <div>Hubo un error</div>}
             {data && <div>E-mail registrado correctamente</div>}
             <ErrorMessage errors={errors} />
