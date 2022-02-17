@@ -17,7 +17,7 @@ const meta: Meta = {
         },
         {
           tabDispayText: 'Mercado',
-          tabPathname: window.location.host,
+          tabPathname: 'something ...',
           tabIcon: <MdOutlineNoFood />
         }
       ]
@@ -85,11 +85,13 @@ const SecondTemplate: Story<Props> = (args) => (
     Tabs={[
       {
         tabDispayText: 'Exito.com',
-        tabPathname: 'something else ...'
+        tabPathname: 'something else ...',
+        tabIcon: <MdFitScreen />
       },
       {
         tabDispayText: 'Mercado',
-        tabPathname: '/iframe.html'
+        tabPathname: '/iframe.html',
+        tabIcon: <MdOutlineNoFood />
       }
     ]}
   >

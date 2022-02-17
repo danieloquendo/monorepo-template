@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Label, Icon } from '@faststore/ui';
 
-export interface Props extends React.ReactElement {
+export interface Props {
   Tabs: {
     tabDispayText: string;
     tabPathname: string;
@@ -13,7 +13,15 @@ const HomeTabs: React.FC<Props> = ({ Tabs, children }) => (
   <div data-tabs-navigate>
     <div data-tabs-container>
       {Tabs.map(({ tabDispayText, tabPathname, tabIcon }) => {
-        const isActive: boolean = window.location.pathname === tabPathname;
+        let isActive = true;
+
+        if (typeof window !== 'undefined') {
+          isActive = window.location.pathname.startsWith(tabPathname);
+          if (tabPathname === '/home-mercado') {
+            isActive = isActive || window.location.pathname.startsWith('/mercado');
+          }
+        }
+
         return (
           <Link key={tabPathname} href={tabPathname} data-tab data-active-tab={isActive}>
             {tabIcon ? <Icon component={tabIcon} /> : <></>}
