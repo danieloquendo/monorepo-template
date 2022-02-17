@@ -9,6 +9,8 @@
     font-family: arial, sans-serif;
 }
 
+
+
 [data-active-tab],[data-active-tab=false], [data-active-tab] > *{
     cursor: pointer;
 }
@@ -27,6 +29,13 @@
 [data-active-tab]{
     background: $amarillo_exito;
     color: #222;
+    [data-store-icon]{
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        fill: rgb(34, 34, 34);
+        vertical-align: middle;
+    }
 }
 
 [data-active-tab=false]{
@@ -34,6 +43,13 @@
     color: #fff;
     &:hover{
         background: $off_tab_hover;
+    }
+    [data-store-icon]{
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        fill: #fff;
+        vertical-align: middle;
     }
 }
 
