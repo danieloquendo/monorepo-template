@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { HomeTabs, Props } from '../../src/components/HomeTabs';
+import { MdFitScreen, MdOutlineNoFood } from 'react-icons/md';
 import './HomeTabs.scss';
 
 const meta: Meta = {
@@ -11,11 +12,13 @@ const meta: Meta = {
       defaultValue: [
         {
           tabDispayText: 'Exito.com',
-          tabPathname: '/iframe.html'
+          tabPathname: '/iframe.html',
+          tabIcon: <MdFitScreen />
         },
         {
           tabDispayText: 'Mercado',
-          tabPathname: window.location.host
+          tabPathname: window.location.host,
+          tabIcon: <MdOutlineNoFood />
         }
       ]
     },
@@ -40,7 +43,8 @@ const demoBanner = () => {
     <div
       style={{
         backgroundColor: 'rgb(0, 188, 193)',
-        height: '100%',
+        minHeight: '40px',
+        height: 'fit-content',
         width: '100%',
         color: '#fff',
         fontSize: 17,
@@ -49,7 +53,7 @@ const demoBanner = () => {
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: '10px 0px 0px 0px',
-        padding: '0px'
+        padding: '10px 0px'
       }}
     >
       <p style={{ margin: 0 }}>hacemos la lista de útiles escolares por ti</p>

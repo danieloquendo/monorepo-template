@@ -17,7 +17,6 @@ const HomeTabs: React.FC<Props> = ({ Tabs, children }) => (
         return (
           <Link key={tabPathname} href={tabPathname} data-tab data-active-tab={isActive}>
             {tabIcon ? <Icon component={tabIcon} /> : <></>}
-            <Icon component={tabIcon} />
             <Label>{tabDispayText}</Label>
           </Link>
         );
