@@ -20,6 +20,7 @@ describe('SearchByCategory', () => {
             }
           }
         ]}
+        placeholder="Busqueda test"
       />
     ).toBeTruthy();
   });
@@ -27,14 +28,6 @@ describe('SearchByCategory', () => {
 
 describe('Dropdown', () => {
   it('renders without crashing', () => {
-    expect(
-      <Dropdown
-        categories={[{ title: 'Petites', remoteId: '2' }]}
-        openDropdown={false}
-        handleCloseDropdown={() => false}
-        handleOpenDropdown={() => true}
-        handleSelected={() => 'Petites'}
-      />
-    ).toBeTruthy();
+    expect(<Dropdown categories={[{ title: 'Petites', remoteId: '2' }]} />).toBeTruthy();
   });
 });
