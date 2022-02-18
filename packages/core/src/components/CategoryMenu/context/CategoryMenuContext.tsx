@@ -105,7 +105,13 @@ const CategoryMenuProvider: React.FC<ICategoryMenuProvider> = ({ children, menu,
   }, [selectedCategory]);
 
   useEffect(() => {
-    if (!showDepartments || !showCategories || !showSubcategories) {
+    if (!showSubcategories) {
+      setDefaultCategory();
+    }
+  }, [showSubcategories]);
+
+  useEffect(() => {
+    if (!showDepartments || !showCategories) {
       setDefaultDepartment();
       setDefaultCategory();
     }
