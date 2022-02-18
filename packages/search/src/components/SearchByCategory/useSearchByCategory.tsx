@@ -32,8 +32,8 @@ export const useSearchByCategory = ({ categories, submit }: UseCategoriesProps) 
     setOpenDropdown(false);
   };
 
-  const busqueda = (e: FormEvent) => {
-    e.preventDefault();
+  const busqueda = (e?: FormEvent) => {
+    e?.preventDefault();
     if (search.length > 0) {
       submit(search, selected);
     }
