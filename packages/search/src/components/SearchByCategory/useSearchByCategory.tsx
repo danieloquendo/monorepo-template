@@ -1,9 +1,9 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { Categories, UseCategoriesProps } from './interfaces';
+import { useDropdown } from './useDropdown';
 
 export const useSearchByCategory = ({ categories, submit }: UseCategoriesProps) => {
-  const [openDropdown, setOpenDropdown] = useState(false);
-  const [selected, setSelected] = useState('');
+  const { selected } = useDropdown();
   const [cat, setCat] = useState<Categories[]>([
     {
       title: '',
@@ -19,33 +19,15 @@ export const useSearchByCategory = ({ categories, submit }: UseCategoriesProps) 
     setCat(cat);
   }, []);
 
-  const handleOpenDropdown = () => {
-    setOpenDropdown(!openDropdown);
-  };
-
-  const handleCloseDropdown = () => {
-    setOpenDropdown(false);
-  };
-
-  const handleSelected = (option: string) => {
-    setSelected(option);
-    setOpenDropdown(false);
-  };
-
-  const busqueda = (e?: FormEvent) => {
-    e?.preventDefault();
+  const busqueda = (e: FormEvent) => {
+    e.preventDefault();
     if (search.length > 0) {
       submit(search, selected);
     }
   };
 
   return {
-    selected,
     cat,
-    openDropdown,
-    handleOpenDropdown,
-    handleCloseDropdown,
-    handleSelected,
     setSearch,
     busqueda,
     search
