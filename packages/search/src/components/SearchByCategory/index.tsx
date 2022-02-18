@@ -1,6 +1,5 @@
 import React, { FC, HTMLAttributes, ReactChild } from 'react';
 import { Dropdown } from './Dropdown';
-import './styles.css';
 import { useSearchByCategory } from './useSearchByCategory';
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -18,7 +17,7 @@ const SearchByCategory: FC<Props> = ({ categories, placeholder, submit }) => {
     <div className="searchByCategory-container">
       {cat.length > 1 && (
         <div className="searchByCategory">
-          <Dropdown categories={cat} {...hookSearch} />
+          <Dropdown categories={cat} />
           <div className="searchByCategory__input-container">
             <form onSubmit={busqueda}>
               <input
@@ -31,7 +30,6 @@ const SearchByCategory: FC<Props> = ({ categories, placeholder, submit }) => {
             </form>
             <div className="searchByCategory__btn-search" onClick={busqueda}>
               <i className="ei-search"> </i>
-              <i className="ei-grid"></i>
             </div>
           </div>
         </div>

@@ -57,6 +57,6 @@
   },
   "dependencies": {
     "@storybook/addon-console": "^1.2.3",
-    "@storybook/preset-scss": "^1.0.3"
+    "storybook-addon-sass-postcss": "^0.1.0"
   }
 }
