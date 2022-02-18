@@ -1,6 +1,5 @@
 import React, { FC, HTMLAttributes, ReactChild } from 'react';
 import { Dropdown } from './Dropdown';
-import { useDropdown } from './useDropdown';
 import { useSearchByCategory } from './useSearchByCategory';
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -13,8 +12,6 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
 const SearchByCategory: FC<Props> = ({ categories, placeholder, submit }) => {
   const hookSearch = useSearchByCategory({ categories, submit });
   const { cat, busqueda, setSearch, search } = hookSearch;
-  const { selected } = useDropdown();
-  console.log('Desde search by category', selected);
 
   return (
     <div className="searchByCategory-container">
