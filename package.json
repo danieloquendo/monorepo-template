@@ -26,7 +26,7 @@
     "bootstrap": "lerna bootstrap",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|tsx|json)\"",
-    "storybook": "lerna run --scope @exito/ui storybook --stream",
+    "storybook": "lerna run --scope @monorepoexito/ui storybook --stream",
     "link": "lerna run link --stream",
     "link:home": "lerna run link --scope=@exito/home --stream",
     "link:core": "lerna run link --scope=@exito/core --stream",
