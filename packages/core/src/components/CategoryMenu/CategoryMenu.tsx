@@ -56,7 +56,7 @@ const CategoryMenu: React.FC = () => {
           )}
 
           {selectedCategory.id !== '0' && showCategories && isMobile && (
-            <div data-category-menu-side-menu-categories>
+            <div data-category-menu-side-menu-subcategories>
               <SideMenu onClose={onSubcategoriesAction} showMenu={showSubcategories} isMobile={isMobile}>
                 <MenuSubcategories />
               </SideMenu>

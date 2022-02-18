@@ -74,29 +74,24 @@ const CategoryMenuProvider: React.FC<ICategoryMenuProvider> = ({ children, menu,
   const [showSubcategories, setShowSubcategories] = useState(false);
 
   const setDefaultDepartment = () => {
-    console.log('setDefaultDepartment');
     setSelectedDepartment(DEFAULT_VALUE.selectedDepartment);
     setShowCategories(false);
   };
   const onDepartmentsAction = () => {
-    console.log('onDepartmentsAction');
     setShowDepartments(!showDepartments);
   };
 
   const setDefaultCategory = () => {
-    console.log('setDefaultCategory');
     setSelectedCategory(DEFAULT_VALUE.selectedCategory);
     setShowSubcategories(false);
   };
 
   const onCategoriesAction = () => {
-    console.log('onCategoriesAction');
     setShowCategories(!showCategories);
   };
 
   const onSubcategoriesAction = () => {
-    console.log('onSubcategoriesAction');
-    setShowSubcategories(showSubcategories);
+    setShowSubcategories(!showSubcategories);
   };
 
   useEffect(() => {
@@ -110,8 +105,7 @@ const CategoryMenuProvider: React.FC<ICategoryMenuProvider> = ({ children, menu,
   }, [selectedCategory]);
 
   useEffect(() => {
-    console.log('change', { showDepartments, showCategories });
-    if (!showDepartments || !showCategories) {
+    if (!showDepartments || !showCategories || !showSubcategories) {
       setDefaultDepartment();
       setDefaultCategory();
     }

@@ -15,8 +15,6 @@ const MenuCategories: React.FC = () => {
     const hoveredCategory =
       categories.find((category: ICategoryMenu) => category.id === hoveredCategoryId.toString()) ??
       DEFAULT_CATEGORY;
-
-    console.log('Click', { hoveredCategory });
     setSelectedCategory(hoveredCategory);
   };
 

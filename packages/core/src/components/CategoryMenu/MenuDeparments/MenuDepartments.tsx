@@ -22,13 +22,11 @@ const MenuDepartments = () => {
     setSelectedDepartment(hoveredDepartment);
   };
   const onHover = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    console.log('Hover', { event, isMobile });
     if (!isMobile) {
       setDepartmentBySelectedLink(event);
     }
   };
   const onClick: React.MouseEventHandler<HTMLElement> = (event) => {
-    console.log('Click', { event, isMobile });
     if (isMobile) {
       event.preventDefault();
       event.stopPropagation();
