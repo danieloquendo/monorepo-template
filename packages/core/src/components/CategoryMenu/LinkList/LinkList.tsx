@@ -6,26 +6,31 @@ export interface IListProps {
   title: React.ReactElement;
   items: ICategoryMenu[];
   subitems?: ICategoryMenu[];
-  onHover?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  onHover?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
   navigationIcon?: React.ReactElement;
+  onClick?: React.MouseEventHandler<HTMLElement>;
 }
 
-const List: React.FC<IListProps> = (props) => {
-  const { title, items, subitems, onHover, navigationIcon } = props;
-  const handleHover = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (onHover) {
-      onHover(event);
-    }
-  };
+const List: React.FC<IListProps> = ({ title, items, subitems, navigationIcon, onHover, onClick }) => {
   return (
     <>
-      <p data-category-menu-items-title>{title}</p>
+      <div data-category-menu-items-title>{title}</div>
       <ul data-category-menu-list>
         {items.map((item) => (
-          <li data-category-menu-item-container key={`item${item.name.replace(' ', '_')}`}>
-            <Link data-category-menu-item as="div" onMouseEnter={handleHover} data-item-id={item.id}>
-              <a href={item.href}>
-                <p>{item.name}</p>
+          <li
+            data-category-menu-item-container
+            data-item-id={item.id}
+            key={`item${item.name.replace(' ', '_')}`}
+          >
+            <Link
+              data-category-menu-item
+              as="div"
+              data-item-id={item.id}
+              onMouseEnter={onHover}
+              onClick={onClick}
+            >
+              <a href={item.href} data-item-id={item.id}>
+                <p data-item-id={item.id}>{item.name}</p>
                 {navigationIcon}
               </a>
             </Link>
@@ -37,11 +42,11 @@ const List: React.FC<IListProps> = (props) => {
                     data-category-menu-subitem
                     key={`subitem${subitem.name.replace(' ', '_')}`}
                     as="div"
-                    onMouseEnter={handleHover}
+                    onMouseEnter={onHover}
                     data-item-id={subitem.id}
                   >
-                    <a href={subitem.href}>
-                      <p>{subitem.name}</p>
+                    <a href={subitem.href} data-item-id={subitem.id}>
+                      <p data-item-id={subitem.id}>{subitem.name}</p>
                     </a>
                   </Link>
                 ))}

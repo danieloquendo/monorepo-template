@@ -1,15 +1,17 @@
 import React from 'react';
 import { Story } from '@storybook/react';
-import CategoryMenu, { ICategoryMenuProps } from '../../../src/components/CategoryMenu';
+import CategoryMenuContainer, {
+  ICategoryMenuContainerProps
+} from '../../../src/components/CategoryMenu/CategoryMenuContainer';
 import './CategoryMenu.scss';
 
 const CategoryMenuStory = {
-  component: CategoryMenu,
+  component: CategoryMenuContainer,
   title: 'Organisms/Category Menu'
 };
 
 export default CategoryMenuStory;
-const Template: Story<ICategoryMenuProps> = (args) => <CategoryMenu {...args} />;
+const Template: Story<ICategoryMenuContainerProps> = (args) => <CategoryMenuContainer {...args} />;
 
 export const Default = Template.bind({});
 
