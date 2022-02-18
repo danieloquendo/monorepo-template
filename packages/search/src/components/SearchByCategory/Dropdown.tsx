@@ -3,7 +3,7 @@ import { DropdownProps } from './interfaces';
 import { useDropdown } from './useDropdown';
 
 export const Dropdown = ({ categories }: DropdownProps) => {
-  const { handleCloseDropdown, handleOpenDropdown, selected, handleSelected, openDropdown } = useDropdown();
+  const { selected, openDropdown, handleOpenDropdown, handleCloseDropdown, handleSelected } = useDropdown();
 
   return (
     <div className="dropdown" onBlur={handleCloseDropdown} tabIndex={0}>

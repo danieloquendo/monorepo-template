@@ -4,6 +4,7 @@ import { useDropdown } from './useDropdown';
 
 export const useSearchByCategory = ({ categories, submit }: UseCategoriesProps) => {
   const { selected } = useDropdown();
+  console.log(selected);
   const [cat, setCat] = useState<Categories[]>([
     {
       title: '',
@@ -21,6 +22,7 @@ export const useSearchByCategory = ({ categories, submit }: UseCategoriesProps) 
 
   const busqueda = (e: FormEvent) => {
     e.preventDefault();
+    console.log(selected);
     if (search.length > 0) {
       submit(search, selected);
     }

@@ -17,11 +17,5 @@ export const useDropdown = () => {
     setOpenDropdown(false);
   };
 
-  return {
-    openDropdown,
-    handleOpenDropdown,
-    handleCloseDropdown,
-    handleSelected,
-    selected
-  };
+  return { selected, openDropdown, handleOpenDropdown, handleCloseDropdown, handleSelected };
 };
