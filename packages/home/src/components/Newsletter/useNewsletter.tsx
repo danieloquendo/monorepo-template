@@ -16,6 +16,18 @@ interface Default {
   default: boolean;
 }
 
+interface InitialErrors {
+  checkButton: string;
+  email: string;
+  alreadySubscribed: string;
+}
+
+const initialErrors = {
+  checkButton: '',
+  email: '',
+  alreadySubscribed: ''
+};
+
 const addToNewsletter = async (data: { email: string; id: string }) =>
   fetch('/api/dataentities/NS/documents/', {
     headers: {
@@ -54,6 +66,9 @@ export const useNewsletter = () => {
   const [userResult, setUserResult] = useState<SearchResponse | Default>({
     default: true
   } as Default);
+  const [actualEmail, setActualEmail] = useState('');
+  const [isChecked, setIsChecked] = useState(false);
+  const [errors, setErrors] = useState(initialErrors);
 
   const addUser = useCallback(
     (user: { email: string; id: string }) => {
@@ -106,6 +121,10 @@ export const useNewsletter = () => {
     } as Default);
   }, []);
 
+  const onEmail = (email: string) => setActualEmail(email);
+  const onCheck = (checkValue: boolean) => setIsChecked(checkValue);
+  const onSetErrors = (errorsValue: InitialErrors) => setErrors(errorsValue);
+
   return {
     error,
     addUser,
@@ -113,6 +132,12 @@ export const useNewsletter = () => {
     loading,
     data,
     userResult,
+    actualEmail,
+    onEmail,
+    isChecked,
+    onCheck,
+    errors,
+    onSetErrors,
     reset
   };
 };

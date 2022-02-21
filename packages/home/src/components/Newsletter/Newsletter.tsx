@@ -1,5 +1,5 @@
 import type { ComponentPropsWithRef, FormEvent } from 'react';
-import React, { forwardRef, useRef, useState, useEffect, useCallback } from 'react';
+import React, { forwardRef, useRef, useEffect, useCallback } from 'react';
 import { Form, Label, Input, Checkbox, LoadingButton, Link } from '@faststore/ui';
 
 import { validateEmail } from './FieldsValidator';
@@ -33,10 +33,21 @@ export interface NewsletterProps extends Omit<ComponentPropsWithRef<'form'>, 'ti
 const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
   // eslint-disable-next-line react/prop-types
   function Newsletter({ title, subtitle, submit, onSubmit, ...otherProps }, ref) {
-    const [errors, setErrors] = useState(initialErrors);
-    const [isChecked, setIsChecked] = useState(false);
-    const [actualEmail, setActualEmail] = useState('');
-    const { error, addUser, searchUser, userResult, loading, data, reset } = useNewsletter();
+    const {
+      error,
+      addUser,
+      searchUser,
+      userResult,
+      loading,
+      data,
+      actualEmail,
+      onEmail,
+      isChecked,
+      onCheck,
+      errors,
+      onSetErrors,
+      reset
+    } = useNewsletter();
 
     const submitUser = useCallback(
       (id = '') => {
@@ -67,16 +78,12 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
           // User exist and suscribe
           tempErrorsSubscribeUser.alreadySubscribed = defaultErrorMessages.invalid.alreadySubscribed;
 
-          setErrors({ ...tempErrorsSubscribeUser });
+          onSetErrors({ ...tempErrorsSubscribeUser });
         }
       }
     }, [submitUser, userResult]);
 
     const emailInputRef = useRef<HTMLInputElement>(null);
-
-    const onChangeCheckButton = (value: boolean) => {
-      setIsChecked(value);
-    };
 
     const validateFormInputs = (email: string) => {
       const tempErrors = {
@@ -95,7 +102,7 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
         tempErrors.checkButton = defaultErrorMessages.empty.checkButton;
       }
 
-      setErrors({ ...tempErrors });
+      onSetErrors({ ...tempErrors });
 
       return isEmailValid && isChecked;
     };
@@ -108,7 +115,7 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
 
       const email: string = emailInputRef.current?.value.trim() ?? '';
 
-      setActualEmail(email);
+      onEmail(email);
       const emailSessionStorage: string = JSON.parse(
         window.sessionStorage.getItem('subscribedToNewsletter') ?? '[]'
       );
@@ -125,7 +132,7 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
         searchUser({ email });
       }
 
-      setErrors({ ...tempErrorSubmit });
+      onSetErrors({ ...tempErrorSubmit });
     };
 
     return (
@@ -150,7 +157,7 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
             </LoadingButton>
           </div>
           <div data-newsletter-legals>
-            <Checkbox onChange={(event) => onChangeCheckButton(event.target.checked)} />
+            <Checkbox onChange={(event) => onCheck(event.target.checked)} />
             <Label>
               <span>
                 <p>
