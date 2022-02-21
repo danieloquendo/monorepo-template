@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { HomeTabs, Props } from '../../src/components/HomeTabs';
+import { HomeTabs, HomeTabsProps } from '../../src/components/HomeTabs';
 import { MdFitScreen, MdOutlineNoFood } from 'react-icons/md';
 import './HomeTabs.scss';
 
@@ -36,7 +36,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<Props> = (args) => <HomeTabs {...args} />;
+const Template: Story<HomeTabsProps> = (args) => <HomeTabs {...args} />;
 
 const demoBanner = () => {
   return (
@@ -79,7 +79,7 @@ const demoBanner = () => {
   );
 };
 
-const SecondTemplate: Story<Props> = (args) => (
+const SecondTemplate: Story<HomeTabsProps> = (args) => (
   <HomeTabs
     {...args}
     Tabs={[

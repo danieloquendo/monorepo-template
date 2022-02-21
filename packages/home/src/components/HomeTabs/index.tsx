@@ -1,1 +1,1 @@
-export { default as HomeTabs, Props } from './HomeTabs';
+export { default as HomeTabs, HomeTabsProps } from './HomeTabs';

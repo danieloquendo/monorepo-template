@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link, Label, Icon } from '@faststore/ui';
 
-export interface Props {
-  Tabs: {
-    tabDispayText: string;
-    tabPathname: string;
-    tabIcon?: React.ReactNode;
-  }[];
+interface Tab {
+  tabDispayText: string;
+  tabPathname: string;
+  tabIcon?: React.ReactNode;
 }
 
-const HomeTabs: React.FC<Props> = ({ Tabs, children }) => (
+export interface HomeTabsProps {
+  Tabs: Tab[];
+}
+
+const HomeTabs: React.FC<HomeTabsProps> = ({ Tabs, children }) => (
   <div data-tabs-navigate>
     <div data-tabs-container>
       {Tabs.map(({ tabDispayText, tabPathname, tabIcon }) => {
