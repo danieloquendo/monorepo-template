@@ -5,14 +5,16 @@ import { checkPaperIcon, heartIcon, truckIcon, userIcon } from '../../icons';
 import './MenuIcons.scss';
 
 const menu = [
-  { name: 'Mi cuenta', link: '/account', icon: userIcon },
-  { name: 'Mis pedidos', link: '/account#/orders', icon: truckIcon },
+  { id: '1', name: 'Mi cuenta', link: '/account', icon: userIcon },
+  { id: '2', name: 'Mis pedidos', link: '/account#/orders', icon: truckIcon },
   {
+    id: '3',
     name: 'Mis listas de mercado',
     link: '/account#/buylist',
     icon: checkPaperIcon
   },
   {
+    id: '4',
     name: 'Mis listas de deseos',
     link: '/account#/buylist/wishlist',
     icon: heartIcon

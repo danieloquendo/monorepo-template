@@ -5,7 +5,7 @@ const useSideModal = () => {
   const handleClose = () => setIsOpen(false);
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && document.body) {
       document.body.style.paddingRight = `${window?.innerWidth - document?.body?.offsetWidth}px`;
       document.body.style.overflow = 'hidden';
     } else {
