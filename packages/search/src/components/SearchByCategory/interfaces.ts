@@ -6,11 +6,13 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: ReactChild;
   categories: Array<{ node: { remoteId: string; slug: string; seo: { title: string } } }>;
   placeholder?: string;
+  lengthCategories: 1;
   submit(term: string, categoria: string): void;
 }
 
 export interface DropdownProps {
   categories: Categories[];
+  defaultCategory?: 'Categorías';
 }
 export interface UseCategoriesProps {
   categories: Array<{ node: { remoteId: string; slug: string; seo: { title: string } } }>;

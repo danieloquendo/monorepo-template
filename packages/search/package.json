@@ -54,13 +54,10 @@
     "react-dom": "^17.0.2",
     "react-is": "^17.0.2",
     "size-limit": "^7.0.5",
+    "storybook-addon-sass-postcss": "^0.1.0",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
     "typescript": "^4.5.5"
-  },
-  "dependencies": {
-    "@storybook/addon-console": "^1.2.3",
-    "storybook-addon-sass-postcss": "^0.1.0"
   },
   "gitHead": "00e87d83cd3f69a68040a1795be2cedd24966e33"
 }

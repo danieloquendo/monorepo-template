@@ -2,26 +2,26 @@ import React from 'react';
 import { DropdownProps } from './interfaces';
 import { useDropdown } from './useDropdown';
 
-export const Dropdown = ({ categories }: DropdownProps) => {
+export const Dropdown = ({ categories, defaultCategory = 'Categorías' }: DropdownProps) => {
   const { selected, openDropdown, handleOpenDropdown, handleCloseDropdown, handleSelected } = useDropdown();
 
   return (
-    <div className="dropdown" onBlur={handleCloseDropdown} tabIndex={0}>
-      <div className="dropdown__header" onClick={handleOpenDropdown}>
-        <span className="dropdown__selected">{selected ? selected : 'Categorías'}</span>
-        <div className="dropdown__arrow-down"></div>
+    <div data-dropdown onBlur={handleCloseDropdown} tabIndex={0}>
+      <div data-dropdown-header onClick={handleOpenDropdown}>
+        <span data-dropdown-selected>{selected ? selected : defaultCategory}</span>
+        <div data-dropdown-arrow-down></div>
       </div>
       {openDropdown && (
-        <div className="dropdown__content-item">
+        <div data-dropdown-content-item>
           {selected !== '' && (
-            <div className="dropdown__item" onClick={() => handleSelected('')}>
-              Categorías
+            <div data-dropdown-item onClick={() => handleSelected('')}>
+              {defaultCategory}
             </div>
           )}
 
           {categories.map(({ title, remoteId }) => {
             return (
-              <div className="dropdown__item" key={remoteId} onClick={() => handleSelected(title)}>
+              <div data-dropdown-item key={remoteId} onClick={() => handleSelected(title)}>
                 {title}
               </div>
             );

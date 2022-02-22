@@ -3,31 +3,39 @@ import { Dropdown } from './Dropdown';
 import { Props } from './interfaces';
 import { useSearchByCategory } from './useSearchByCategory';
 
-export const SearchCategory = ({ categories, placeholder, submit }: Props) => {
-  const hookSearch = useSearchByCategory({ categories, submit });
-  const { cat, busqueda, setSearch, search } = hookSearch;
+export const SearchCategory = ({ categories, placeholder, submit, lengthCategories = 1 }: Props) => {
+  const { cat, submitSearch, setSearch, search, openAutoComplete, setOpenAutoComplete } = useSearchByCategory(
+    { categories, submit }
+  );
 
   return (
-    <div className="searchByCategory-container">
-      {cat.length > 1 && (
-        <div className="searchByCategory">
+    <div data-searchByCategory-container>
+      {cat.length > lengthCategories && (
+        <div data-searchByCategory>
           <Dropdown categories={cat} />
-          <div className="searchByCategory__input-container">
-            <form onSubmit={busqueda}>
+          <div data-searchByCategory-input-container>
+            <form data-SearchByCategory-form onSubmit={submitSearch}>
               <input
+                data-searchByCategory-input
                 type="text"
                 placeholder={placeholder}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                onFocus={() => console.log('focus activo')}
+                onFocus={() => setOpenAutoComplete(true)}
+                onBlur={() => setOpenAutoComplete(false)}
               />
             </form>
-            <div className="searchByCategory__btn-search" onClick={busqueda}>
+            <div
+              data-searchByCategory-btn-search
+              data-searchByCategory-btn-autocomplete={openAutoComplete}
+              onClick={submitSearch}
+            >
               <i className="ei-search"> </i>
             </div>
           </div>
         </div>
       )}
+      {openAutoComplete && <section data-searchByCategory-autoComplete></section>}
     </div>
   );
 };

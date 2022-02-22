@@ -11,6 +11,7 @@ export const useSearchByCategory = ({ categories, submit }: UseCategoriesProps) 
     }
   ]);
   const [search, setSearch] = useState('');
+  const [openAutoComplete, setOpenAutoComplete] = useState(false);
 
   useEffect(() => {
     const cat = categories.map(({ node }) => {
@@ -19,9 +20,9 @@ export const useSearchByCategory = ({ categories, submit }: UseCategoriesProps) 
     setCat(cat);
   }, []);
 
-  const busqueda = (e: FormEvent) => {
-    const { optionSelected } = searchState;
+  const submitSearch = (e: FormEvent) => {
     e.preventDefault();
+    const { optionSelected } = searchState;
     if (search.length > 0) {
       submit(search, optionSelected);
     }
@@ -30,7 +31,9 @@ export const useSearchByCategory = ({ categories, submit }: UseCategoriesProps) 
   return {
     cat,
     setSearch,
-    busqueda,
-    search
+    submitSearch,
+    search,
+    openAutoComplete,
+    setOpenAutoComplete
   };
 };

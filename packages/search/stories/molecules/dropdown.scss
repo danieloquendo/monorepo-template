@@ -1,11 +1,11 @@
-.dropdown{
-  max-width: 121px;
+[data-dropdown] {
+  min-width: 121px;
   background-color: #f4f4f4;
   border-radius: 10px 0 0 10px;
   cursor: pointer;
   user-select: none;
 
-  &__selected {
+  [data-dropdown-selected] {
     max-width: 121px;
     height: 17px;
     margin: 0;
@@ -16,7 +16,7 @@
     text-overflow: ellipsis;
   }
 
-  &__arrow-down {
+  [data-dropdown-arrow-down] {
     width: 0;
     height: 0;
     border-top: 4px solid transparent;
@@ -26,17 +26,17 @@
     transition: all .2s ease-in-out;
   }
 
-  &__header {
-    align-items: center;
+  [data-dropdown-header] {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    height: 100%;
     padding: 8px 12px;
     font-weight: 500;
     font-size: 12px;
-    height: 100%;
   }
 
-  &__content-item {
+  [data-dropdown-content-item] {
     position: absolute;
     z-index: 1;
     width: 170px;
@@ -48,15 +48,19 @@
     box-shadow: 0 1px 4px rgb(0 0 0 / 15%);
   }
 
-  &__item {
+  [data-dropdown-item] {
     padding: 8px 12px;
     color: #222;
     font-size: 12px;
     cursor: pointer;
-
-    &:hover {
-      background-color: #f4f4f4;
-    }
   }
 
+  [data-dropdown-item]:hover {
+    background-color: #f4f4f4;
+  }
+
+  @include media("<tablet") {
+    min-width: 0;
+    max-width: 51px;
+  }
 }
