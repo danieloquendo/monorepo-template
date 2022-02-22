@@ -30,6 +30,6 @@ export type SearchAction = { type: '[dropdown select] selected'; payload: Search
 
 export interface SearchContextProps {
   searchState: SearchState;
-  dispatch: any;
+  dispatch: any; //Any temporal mientras buscamos una solución para este tipado
   //dispatch: ({type, payload}:{type:string, payload:{optionSelected: string}} ) => void | {};
 }
