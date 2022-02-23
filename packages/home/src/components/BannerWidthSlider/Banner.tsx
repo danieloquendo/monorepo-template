@@ -12,7 +12,7 @@ const Banner: FC<BannerData> = (bannerData) => {
               {bannerData?.bannerImage?.sources?.map((source, index) => (
                 <source key={`bannerSource_${index}`} media={source?.media} srcSet={source?.srcSet} />
               ))}
-              <img alt={bannerData?.bannerImage?.alt} loading="lazy" width="100px" height="100px" />
+              <img alt={bannerData?.bannerImage?.alt} loading="lazy" width="374px" height="413px" />
             </picture>
           </a>
         </BannerImage>

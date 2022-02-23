@@ -1,6 +1,11 @@
 import React from 'react';
 import { Story } from '@storybook/react';
 import BannerWithSlider, { BannerWithSliderProps } from '../../../src/components/BannerWidthSlider/Container';
+import carouselImage1 from './static/carousel-image-1.jpg';
+import carouselImage2 from './static/carousel-image-2.jpg';
+import carouselImage3 from './static/carousel-image-3.jpg';
+import bannerImageDesktop from './static/banner-image-desktop.jpg';
+import bannerImageMobile from './static/banner-image-mobile.jpg';
 import './BannerWithSlider.scss';
 
 const BannerWithSliderStory = {
@@ -20,16 +25,14 @@ Default.args = {
       sources: [
         {
           media: '(min-width: 40em)',
-          srcSet:
-            'https://eobando.vtexassets.com/assets/vtex.file-manager-graphql/images/82fabdab-0d47-4519-a5e7-b17e5e0c8738___72e6bb7013d7b6d3a18b2a0065fd1161.jpg'
+          srcSet: bannerImageDesktop
         },
         {
           media: '(max-width: 40em)',
-          srcSet:
-            'https://eobando.vtexassets.com/assets/vtex.file-manager-graphql/images/53c77c92-776d-4fe3-bcb0-e22f6a000a15___3c52819c4d63487ddfcf43627670fb78.jpg'
+          srcSet: bannerImageMobile
         }
       ],
-      href: '/about',
+      href: '/',
       alt: 'Banner Promoción'
     }
   },
@@ -39,32 +42,42 @@ Default.args = {
         sources: [
           {
             media: '(min-width: 40em)',
-            srcSet:
-              'https://eobando.vtexassets.com/assets/vtex.file-manager-graphql/images/26c92b29-6871-43f3-8413-7c17f06cd992___9ef67146f9aea2e5b59c0c7c709844df.jpg'
+            srcSet: carouselImage1
           },
           {
             media: '(max-width: 40em)',
-            srcSet:
-              'https://eobando.vtexassets.com/assets/vtex.file-manager-graphql/images/e911ab08-acd9-4f74-ab89-6d777f7c0e4f___9ef67146f9aea2e5b59c0c7c709844df.jpg'
+            srcSet: carouselImage1
           }
         ],
-        href: '/about',
+        href: '/',
         alt: 'First Image'
       },
       {
         sources: [
           {
             media: '(min-width: 40em)',
-            srcSet:
-              'https://eobando.vtexassets.com/assets/vtex.file-manager-graphql/images/fb487a32-23d8-4cfd-a6e4-da6c7d6a7abf___bb69e38f8e88b3b285b5e5b473603b98.jpg'
+            srcSet: carouselImage2
           },
           {
             media: '(max-width: 40em)',
-            srcSet:
-              'https://eobando.vtexassets.com/assets/vtex.file-manager-graphql/images/df337e6c-1f61-4e09-8698-437f01bb972c___bb69e38f8e88b3b285b5e5b473603b98.jpg'
+            srcSet: carouselImage2
           }
         ],
-        href: '/about',
+        href: '/',
+        alt: 'Second Image'
+      },
+      {
+        sources: [
+          {
+            media: '(min-width: 40em)',
+            srcSet: carouselImage3
+          },
+          {
+            media: '(max-width: 40em)',
+            srcSet: carouselImage3
+          }
+        ],
+        href: '/',
         alt: 'Second Image'
       }
     ],
