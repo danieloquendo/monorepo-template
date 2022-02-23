@@ -22,6 +22,9 @@ describe('<Newsletter />', () => {
       <Newsletter
         title="Suscríbete a nuestro newsletter"
         submit="Suscríbete"
+        defaultErrorMessages={undefined}
+        legalContent={undefined}
+        useFecthNewsletter={undefined}
         onSubmit={(email: string) => {
           alert(`Subscribing ${email} to the newsletter.`);
         }}
@@ -35,6 +38,9 @@ describe('<Newsletter />', () => {
         <Newsletter
           title="Suscríbete a nuestro newsletter"
           submit="Suscríbete"
+          defaultErrorMessages={undefined}
+          legalContent={undefined}
+          useFecthNewsletter={undefined}
           onSubmit={(email: string) => {
             alert(`Subscribing ${email} to the newsletter.`);
           }}
