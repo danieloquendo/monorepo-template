@@ -17,6 +17,7 @@ const Newsletter = ({
   title,
   subtitle,
   submit,
+  inputPlaceHolder,
   defaultErrorMessages,
   legalContent,
   useFecthNewsletter,
@@ -121,8 +122,8 @@ const Newsletter = ({
           <Input
             id="newsletter-email"
             type="text"
-            placeholder="Ingresa tu correo"
-            name="newsletter-email"
+            placeholder={inputPlaceHolder}
+            name={inputPlaceHolder}
             ref={emailInputRef}
           />
           <LoadingButton loading={useFecthNewsletter.loading} data-store-loading-button>

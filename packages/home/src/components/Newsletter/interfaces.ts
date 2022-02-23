@@ -54,6 +54,7 @@ export interface NewsletterProps extends Omit<ComponentPropsWithRef<'form'>, 'ti
   title: string;
   subtitle?: string;
   submit?: string;
+  inputPlaceHolder: string;
   defaultErrorMessages: ErrorsProps;
   legalContent: Array<LegalProps>;
   useFecthNewsletter: useFecthNewsletterProps;
