@@ -1,16 +1,12 @@
 import React, { FC } from 'react';
 import BuyByCategoryItem from './Item';
 
-interface ItemImage {
-  source: string;
+export interface Item {
+  tittle: string;
+  src: string;
   href: string;
   alt: string;
-}
-
-export interface Item {
-  image: ItemImage;
-  tittle: string;
-  key: string;
+  key?: string;
 }
 
 export interface BuyByCategoryProps {
@@ -24,7 +20,7 @@ const Container: FC<BuyByCategoryProps> = ({ allItems, tittle = '' }) => {
       <div data-buybycategory-tittle>{tittle}</div>
 
       {allItems?.map((item: Item, index) => (
-        <BuyByCategoryItem image={item?.image} tittle={item?.tittle} key={`buybycategoryitem-${index}`} />
+        <BuyByCategoryItem {...item} key={`buybycategoryitem-${index}`} />
       ))}
     </div>
   );
